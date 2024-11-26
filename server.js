@@ -3,19 +3,16 @@ const app = express();
 const db = require('./db');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
+require('dotenv').config();
 
-app.get('/', (req, res) => {
-    res.send('Hello, world!');
-});
-
-
-
+//person details
 const personRoute = require('./routes/personRoute')
 app.use('/person',personRoute);
 
 const menuRouter = require('./routes/menuRoute');
 app.use('/menu',menuRouter);
 
-app.listen(3000, () => {
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
     console.log('Server is running on port 3000');
 });

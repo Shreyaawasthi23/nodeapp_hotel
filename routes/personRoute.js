@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const person = require('./../models/person')
-//POST
 
+//POST
 router.post('/', async (req, res) => {
     try {
         const data = req.body
@@ -45,6 +45,7 @@ router.get('/:workType', async (req, res) => {
     }
 })
 
+//UPDATE function
 router.put('/:id', async(req,res)=>{
     try {
         const personId = req.params.id;
@@ -69,6 +70,7 @@ router.put('/:id', async(req,res)=>{
     }
 })
 
+//DELETE function
 router.delete('/:id', async (req, res) =>{
     try {
         const personId = req.params.id;
@@ -79,7 +81,7 @@ router.delete('/:id', async (req, res) =>{
         }
         console.log('Data deleted');
         res.status(200).json({message: 'person deleted!!'});
-        
+
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: 'Internal server error' })
